@@ -1,7 +1,7 @@
 export const SITE = {
   name: "PayerParity",
   tagline: "Payer-sourced negotiation leverage for hospitals",
-  email: "hello@payerparity.com",
+  email: "payerparity@gmail.com",
   domain: "payerparity.com",
 } as const;
 

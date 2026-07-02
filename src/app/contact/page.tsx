@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { MailtoForm } from "@/components/MailtoForm";
+import { ContactForm } from "@/components/ContactForm";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SITE } from "@/lib/constants";
 
@@ -22,7 +22,7 @@ export default function ContactPage() {
 
       <section className="mx-auto max-w-2xl px-6 pb-24">
         <div className="rounded-xl border border-card-border bg-card/50 p-8">
-          <MailtoForm />
+          <ContactForm />
         </div>
 
         <div className="mt-10 text-center text-sm text-muted">

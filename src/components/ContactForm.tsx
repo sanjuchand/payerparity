@@ -5,8 +5,13 @@ import { FormEvent, useState, Suspense } from "react";
 import { SITE } from "@/lib/constants";
 
 type FormType = "report" | "contact";
+type SubmitState = "idle" | "submitting" | "success" | "error";
 
-function MailtoFormInner() {
+const FORMSPREE_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID
+  ? `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID}`
+  : null;
+
+function ContactFormInner() {
   const searchParams = useSearchParams();
   const defaultType: FormType =
     searchParams.get("type") === "report" ? "report" : "contact";
@@ -17,30 +22,74 @@ function MailtoFormInner() {
   const [email, setEmail] = useState("");
   const [payer, setPayer] = useState("");
   const [message, setMessage] = useState("");
+  const [submitState, setSubmitState] = useState<SubmitState>("idle");
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
+
+    if (!FORMSPREE_ENDPOINT) {
+      setSubmitState("error");
+      return;
+    }
+
+    setSubmitState("submitting");
 
     const subject =
       formType === "report"
-        ? `Parity Report Request — ${hospital || "Hospital"}`
-        : `Intro Call Request — ${hospital || "Hospital"}`;
+        ? `Parity Report Request — ${hospital}`
+        : `Intro Call Request — ${hospital}`;
 
-    const body = [
-      formType === "report"
-        ? "I'd like to request a free Parity Report for my facility."
-        : "I'd like to schedule an intro call.",
-      "",
-      `Hospital / Health System: ${hospital}`,
-      `Role: ${role}`,
-      `Email: ${email}`,
-      payer ? `Primary payer of focus: ${payer}` : "",
-      message ? `\nAdditional context:\n${message}` : "",
-    ]
-      .filter(Boolean)
-      .join("\n");
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          _subject: subject,
+          form_type: formType === "report" ? "Parity Report Request" : "Intro Call Request",
+          hospital,
+          role,
+          email,
+          payer: payer || "Not specified",
+          message: message || "None",
+          _replyto: email,
+        }),
+      });
 
-    window.location.href = `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      if (!response.ok) {
+        throw new Error("Form submission failed");
+      }
+
+      setSubmitState("success");
+      setHospital("");
+      setRole("");
+      setEmail("");
+      setPayer("");
+      setMessage("");
+    } catch {
+      setSubmitState("error");
+    }
+  }
+
+  if (submitState === "success") {
+    return (
+      <div className="rounded-xl border border-accent/30 bg-accent-muted/20 p-8 text-center">
+        <h2 className="text-xl font-semibold text-foreground">Message sent</h2>
+        <p className="mt-3 text-muted">
+          Thanks for reaching out. We&apos;ll get back to you within one business
+          day at the email you provided.
+        </p>
+        <button
+          type="button"
+          onClick={() => setSubmitState("idle")}
+          className="mt-6 text-sm font-medium text-accent hover:underline"
+        >
+          Send another message
+        </button>
+      </div>
+    );
   }
 
   return (
@@ -78,6 +127,7 @@ function MailtoFormInner() {
           <input
             id="hospital"
             type="text"
+            name="hospital"
             required
             value={hospital}
             onChange={(e) => setHospital(e.target.value)}
@@ -93,6 +143,7 @@ function MailtoFormInner() {
           <input
             id="role"
             type="text"
+            name="role"
             required
             value={role}
             onChange={(e) => setRole(e.target.value)}
@@ -108,6 +159,7 @@ function MailtoFormInner() {
           <input
             id="email"
             type="email"
+            name="email"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -124,6 +176,7 @@ function MailtoFormInner() {
           <input
             id="payer"
             type="text"
+            name="payer"
             value={payer}
             onChange={(e) => setPayer(e.target.value)}
             className="w-full rounded-lg border border-card-border bg-card px-4 py-2.5 text-sm text-foreground placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
@@ -138,6 +191,7 @@ function MailtoFormInner() {
           </label>
           <textarea
             id="message"
+            name="message"
             rows={3}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
@@ -147,15 +201,28 @@ function MailtoFormInner() {
         </div>
       </div>
 
+      {submitState === "error" && (
+        <p className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-200">
+          {!FORMSPREE_ENDPOINT
+            ? "Form is not configured yet. Please email us directly."
+            : "Something went wrong. Please try again or email us directly."}
+        </p>
+      )}
+
       <button
         type="submit"
-        className="w-full rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-zinc-900 transition-colors hover:bg-accent-hover sm:w-auto"
+        disabled={submitState === "submitting"}
+        className="w-full rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-zinc-900 transition-colors hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
       >
-        {formType === "report" ? "Send report request" : "Send intro request"}
+        {submitState === "submitting"
+          ? "Sending..."
+          : formType === "report"
+            ? "Send report request"
+            : "Send intro request"}
       </button>
 
       <p className="text-xs text-muted">
-        Submitting opens your email client with a pre-filled message to{" "}
+        Submissions are sent to{" "}
         <a href={`mailto:${SITE.email}`} className="text-accent hover:underline">
           {SITE.email}
         </a>
@@ -165,10 +232,10 @@ function MailtoFormInner() {
   );
 }
 
-export function MailtoForm() {
+export function ContactForm() {
   return (
     <Suspense fallback={<div className="h-96 animate-pulse rounded-xl bg-card" />}>
-      <MailtoFormInner />
+      <ContactFormInner />
     </Suspense>
   );
 }
