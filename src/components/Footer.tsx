@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { NAV_LINKS, SITE } from "@/lib/constants";
 
@@ -7,11 +8,14 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-6 py-12">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2">
-            <Link href="/" className="flex items-center gap-2">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent-muted text-sm font-bold text-accent">
-                PP
-              </span>
-              <span className="text-lg font-semibold">{SITE.name}</span>
+            <Link href="/" className="inline-flex items-center">
+              <Image
+                src="/payerparity-logo.png"
+                alt="PayerParity"
+                width={200}
+                height={54}
+                className="h-12 w-auto"
+              />
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted">
               {SITE.tagline}. We find what your payer already pays comparable

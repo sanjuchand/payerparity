@@ -46,7 +46,7 @@ export default function CaseStudyPage() {
 
       {/* Part 1: Ownership mapping */}
       <section className="mx-auto max-w-6xl px-6 pb-16">
-        <h2 className="text-2xl font-semibold text-foreground">
+        <h2 className="text-2xl font-semibold text-primary">
           Corporate ownership mapping
         </h2>
         <p className="mt-4 max-w-3xl leading-relaxed text-muted">
@@ -80,7 +80,7 @@ export default function CaseStudyPage() {
       {/* Part 2: The disparity */}
       <section className="border-y border-card-border bg-card/20">
         <div className="mx-auto max-w-6xl px-6 py-16">
-          <h2 className="text-2xl font-semibold text-foreground">
+          <h2 className="text-2xl font-semibold text-primary">
             The commercial-to-CMS premium disparity
           </h2>
           <p className="mt-4 max-w-3xl leading-relaxed text-muted">
@@ -154,7 +154,7 @@ export default function CaseStudyPage() {
 
       {/* Part 3: Quantifying underpayment */}
       <section className="mx-auto max-w-6xl px-6 py-16">
-        <h2 className="text-2xl font-semibold text-foreground">
+        <h2 className="text-2xl font-semibold text-primary">
           Quantifying the underpayment
         </h2>
         <p className="mt-4 max-w-3xl leading-relaxed text-muted">
@@ -199,7 +199,7 @@ export default function CaseStudyPage() {
       {/* Dallas scenario */}
       <section className="border-t border-card-border bg-card/20">
         <div className="mx-auto max-w-6xl px-6 py-16">
-          <h2 className="text-2xl font-semibold text-foreground">
+          <h2 className="text-2xl font-semibold text-primary">
             Applying the same model in Dallas–Fort Worth
           </h2>
           <p className="mt-4 text-sm text-muted">
@@ -270,7 +270,7 @@ export default function CaseStudyPage() {
 
       {/* Two equations - condensed */}
       <section className="mx-auto max-w-6xl px-6 py-16">
-        <h2 className="text-2xl font-semibold text-foreground">
+        <h2 className="text-2xl font-semibold text-primary">
           Two reasons the same DRG pays differently
         </h2>
         <p className="mt-4 max-w-3xl text-muted">
@@ -305,7 +305,7 @@ export default function CaseStudyPage() {
 
       <section className="border-t border-card-border bg-card/20">
         <div className="mx-auto max-w-6xl px-6 py-16">
-          <h2 className="text-xl font-semibold text-foreground">
+          <h2 className="text-xl font-semibold text-primary">
             What PayerParity builds from this
           </h2>
           <ul className="mt-6 grid gap-4 sm:grid-cols-3">

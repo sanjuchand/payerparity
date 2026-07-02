@@ -39,7 +39,7 @@ export default function BlogPage() {
                   <span aria-hidden="true">·</span>
                   <span>{post.author}</span>
                 </div>
-                <h2 className="mt-3 text-2xl font-semibold text-foreground transition-colors group-hover:text-accent">
+                <h2 className="mt-3 text-2xl font-semibold text-primary transition-colors group-hover:text-accent">
                   <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                 </h2>
                 <p className="mt-3 max-w-3xl leading-relaxed text-muted">

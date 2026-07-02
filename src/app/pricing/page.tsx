@@ -62,11 +62,11 @@ export default function PricingPage() {
               }`}
             >
               {option.featured && (
-                <span className="mb-3 inline-block w-fit rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-zinc-900">
+                <span className="mb-3 inline-block w-fit rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground">
                   Recommended start
                 </span>
               )}
-              <h3 className="text-xl font-semibold text-foreground">
+              <h3 className="text-xl font-semibold text-primary">
                 {option.title}
               </h3>
               <p className="mt-1 text-sm text-accent">{option.subtitle}</p>
@@ -77,7 +77,7 @@ export default function PricingPage() {
                 href={option.href}
                 className={`mt-6 inline-flex items-center justify-center rounded-lg px-4 py-2.5 text-sm font-medium transition-colors ${
                   option.featured
-                    ? "bg-accent text-zinc-900 hover:bg-accent-hover"
+                    ? "bg-accent text-accent-foreground hover:bg-accent-hover"
                     : "border border-card-border text-foreground hover:border-accent/50 hover:text-accent"
                 }`}
               >
@@ -88,7 +88,7 @@ export default function PricingPage() {
         </div>
 
         <div className="mt-12 rounded-xl border border-card-border bg-card/30 p-8">
-          <h2 className="text-lg font-semibold text-foreground">
+          <h2 className="text-lg font-semibold text-primary">
             Book a call to discuss your facility
           </h2>
           <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted">

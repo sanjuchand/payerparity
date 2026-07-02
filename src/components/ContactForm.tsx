@@ -76,7 +76,7 @@ function ContactFormInner() {
   if (submitState === "success") {
     return (
       <div className="rounded-xl border border-accent/30 bg-accent-muted/20 p-8 text-center">
-        <h2 className="text-xl font-semibold text-foreground">Message sent</h2>
+        <h2 className="text-xl font-semibold text-primary">Message sent</h2>
         <p className="mt-3 text-muted">
           Thanks for reaching out. We&apos;ll get back to you within one business
           day at the email you provided.
@@ -100,7 +100,7 @@ function ContactFormInner() {
           onClick={() => setFormType("report")}
           className={`flex-1 rounded-md px-4 py-2 text-sm font-medium transition-colors ${
             formType === "report"
-              ? "bg-accent text-zinc-900"
+              ? "bg-accent text-accent-foreground"
               : "text-muted hover:text-foreground"
           }`}
         >
@@ -111,7 +111,7 @@ function ContactFormInner() {
           onClick={() => setFormType("contact")}
           className={`flex-1 rounded-md px-4 py-2 text-sm font-medium transition-colors ${
             formType === "contact"
-              ? "bg-accent text-zinc-900"
+              ? "bg-accent text-accent-foreground"
               : "text-muted hover:text-foreground"
           }`}
         >
@@ -202,7 +202,7 @@ function ContactFormInner() {
       </div>
 
       {submitState === "error" && (
-        <p className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-200">
+        <p className="rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700">
           {!FORMSPREE_ENDPOINT
             ? "Form is not configured yet. Please email us directly."
             : "Something went wrong. Please try again or email us directly."}
@@ -212,7 +212,7 @@ function ContactFormInner() {
       <button
         type="submit"
         disabled={submitState === "submitting"}
-        className="w-full rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-zinc-900 transition-colors hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+        className="w-full rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
       >
         {submitState === "submitting"
           ? "Sending..."

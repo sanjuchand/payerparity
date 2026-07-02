@@ -8,7 +8,7 @@ export function ComparisonTable() {
         <div className="border-l border-card-border p-4 font-medium text-muted">
           Modeled benchmarks
         </div>
-        <div className="border-l border-card-border bg-accent-muted/40 p-4 font-medium text-accent">
+        <div className="border-l border-card-border bg-accent-muted/40 p-4 font-medium text-primary">
           PayerParity
         </div>
       </div>

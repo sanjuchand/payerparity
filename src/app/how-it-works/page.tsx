@@ -66,7 +66,7 @@ export default function HowItWorksPage() {
                 {step.number}
               </div>
               <div>
-                <h2 className="text-2xl font-semibold text-foreground">
+                <h2 className="text-2xl font-semibold text-primary">
                   {step.title}
                 </h2>
                 <p className="mt-4 text-lg leading-relaxed text-muted">
@@ -112,7 +112,7 @@ export default function HowItWorksPage() {
 
       <section className="border-t border-card-border bg-card/20">
         <div className="mx-auto max-w-6xl px-6 py-16">
-          <h2 className="text-xl font-semibold text-foreground">
+          <h2 className="text-xl font-semibold text-primary">
             A note on terminology
           </h2>
           <p className="mt-4 max-w-3xl leading-relaxed text-muted">

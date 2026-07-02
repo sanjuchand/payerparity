@@ -40,7 +40,7 @@ export default function AboutPage() {
 
       <section className="border-y border-card-border bg-card/20">
         <div className="mx-auto max-w-6xl px-6 py-16">
-          <h2 className="text-2xl font-semibold text-foreground">Our story</h2>
+          <h2 className="text-2xl font-semibold text-primary">Our story</h2>
           <div className="mt-6 max-w-3xl space-y-4 leading-relaxed text-muted">
             <p>
               Hospital price transparency regulation created an enormous volume of

@@ -20,14 +20,14 @@ export function CTASection({
   return (
     <section className="border-y border-card-border bg-accent-muted/30">
       <div className="mx-auto max-w-6xl px-6 py-16 text-center sm:py-20">
-        <h2 className="mx-auto max-w-2xl text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+        <h2 className="mx-auto max-w-2xl text-3xl font-semibold tracking-tight text-primary sm:text-4xl">
           {title}
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-lg text-muted">{description}</p>
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link
             href={primaryHref}
-            className="inline-flex items-center justify-center rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-zinc-900 transition-colors hover:bg-accent-hover"
+            className="inline-flex items-center justify-center rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent-hover"
           >
             {primaryLabel}
           </Link>

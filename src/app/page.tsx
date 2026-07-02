@@ -34,13 +34,13 @@ export default function Home() {
   return (
     <>
       <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(245,158,11,0.08)_0%,_transparent_60%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(61,183,196,0.12)_0%,_transparent_60%)]" />
         <div className="mx-auto max-w-6xl px-6 pb-20 pt-16 sm:pb-28 sm:pt-24">
           <div className="max-w-3xl">
             <p className="mb-4 text-sm font-medium uppercase tracking-widest text-accent">
               Payer-sourced negotiation leverage
             </p>
-            <h1 className="text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+            <h1 className="text-4xl font-semibold leading-tight tracking-tight text-primary sm:text-5xl lg:text-6xl">
               Your payer already pays another hospital more for the same hospital
               stay.{" "}
               <span className="text-accent">We find it in their own files.</span>
@@ -53,7 +53,7 @@ export default function Home() {
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <Link
                 href="/contact?type=report"
-                className="inline-flex items-center justify-center rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-zinc-900 transition-colors hover:bg-accent-hover"
+                className="inline-flex items-center justify-center rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent-hover"
               >
                 Get Your Facility&apos;s Parity Report
               </Link>

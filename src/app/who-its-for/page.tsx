@@ -89,7 +89,7 @@ export default function WhoItsForPage() {
 
       <section className="border-y border-card-border bg-card/20">
         <div className="mx-auto max-w-6xl px-6 py-16">
-          <h2 className="text-2xl font-semibold text-foreground">
+          <h2 className="text-2xl font-semibold text-primary">
             What they believe today — and what we change
           </h2>
           <div className="mt-8 grid gap-6 lg:grid-cols-2">

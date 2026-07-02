@@ -1,14 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --background: #09090b;
-  --foreground: #fafafa;
-  --muted: #a1a1aa;
-  --card: #18181b;
-  --card-border: #27272a;
-  --accent: #f59e0b;
-  --accent-hover: #fbbf24;
-  --accent-muted: rgba(245, 158, 11, 0.12);
+  /* PayerParity brand palette — derived from logo */
+  --background: #f9f9f9;
+  --foreground: #1a1a1a;
+  --muted: #5a6b70;
+  --card: #ffffff;
+  --card-border: #d8e4e8;
+  --primary: #005b6e;
+  --primary-hover: #004a5a;
+  --accent: #3db7c4;
+  --accent-hover: #005b6e;
+  --accent-foreground: #ffffff;
+  --accent-muted: rgba(61, 183, 196, 0.12);
+  --primary-muted: rgba(0, 91, 110, 0.08);
 }
 
 @theme inline {
@@ -17,9 +22,13 @@
   --color-muted: var(--muted);
   --color-card: var(--card);
   --color-card-border: var(--card-border);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
+  --color-accent-foreground: var(--accent-foreground);
   --color-accent-muted: var(--accent-muted);
+  --color-primary-muted: var(--primary-muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -35,8 +44,8 @@ body {
 }
 
 ::selection {
-  background: rgba(245, 158, 11, 0.35);
-  color: #fff;
+  background: rgba(61, 183, 196, 0.25);
+  color: var(--foreground);
 }
 
 .blog-content {
@@ -53,14 +62,14 @@ body {
   margin-top: 2.5rem;
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--foreground);
+  color: var(--primary);
 }
 
 .blog-content h3 {
   margin-top: 2rem;
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--foreground);
+  color: var(--primary);
 }
 
 .blog-content p {
